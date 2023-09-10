@@ -94,8 +94,9 @@ abstract class ArrayType extends AbiType {
         elems[i] = IntType.encodeInt(offset);
         List<int> encoded = elementType.encode(l[i]);
         elems[l.length + i] = encoded;
-        offset += (AbiType.int32Size *
-            ((encoded.length - 1) / AbiType.int32Size + 1)) as int;
+        offset +=
+            (AbiType.int32Size * ((encoded.length - 1) / AbiType.int32Size + 1))
+                .toInt();
       }
     } else {
       elems = List<List<int>>.filled(l.length, [], growable: true);
